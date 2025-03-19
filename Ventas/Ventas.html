@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Venta</title>
+
+    <!-- BOOTSWATCH -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css" />
+
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="ventas.css" />
+
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css" />
+</head>
+<body class="bg-light-blue-custom">
+    <div class="container p-4">
+        <a href="../index.html" class="btn btn-menu">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </a>
+        <h1 class="h2">Registro de Venta</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Formulario de Registro de Venta -->
+                <div class="card card-transparent">
+                    <div class="card-body">
+                        <h1 class="h4">Registrar Venta</h1>
+            
+                        <form id="sale-form">
+                            <!-- Checkbox para mostrar/ocultar el campo de cliente frecuente -->
+                            <div class="mb-3">
+                                <input type="checkbox" id="frequent-client-checkbox" class="form-check-input">
+                                <label class="form-check-label" for="frequent-client-checkbox">Cliente Frecuente</label>
+                            </div>
+            
+                            <div class="mb-3">
+                                <label for="customer-name" class="form-label">Nombre del Cliente:</label>
+                                <input type="text" id="customer-name" name="customer-name" class="form-control" placeholder="Nombre del Cliente" required />
+                            </div>
+            
+                           <!-- Campo de Cliente Frecuente que se muestra si el checkbox está marcado -->
+                            <div class="mb-3" id="frequent-client-section" style="display: none;">
+                                <label for="client" class="form-label">Cliente Frecuente:</label>
+                                <select id="client" name="client" class="form-control" required>
+                                <option value="" disabled selected>Seleccione un cliente</option>
+                                <!-- Opciones de clientes frecuentes se cargarán dinámicamente -->
+                                </select>
+                            </div>
+
+            
+                            <div class="mb-3">
+                                <label for="nit" class="form-label">NIT:</label>
+                                <input type="text" id="nit" name="nit" class="form-control" placeholder="NIT" required />
+                            </div>
+            
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Número de Teléfono:</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Teléfono" required />
+                            </div>
+            
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Descripción:</label>
+                                <textarea id="description" name="description" class="form-control" placeholder="Descripción de la venta"></textarea>
+                            </div>
+            
+                            <div class="mb-3">
+                                <label for="product" class="form-label">Producto:</label>
+                                <select id="product" name="product" class="form-control" required>
+                                    <option value="" disabled selected>Seleccione un producto</option>
+                                    <!-- Opciones de producto se cargarán dinámicamente -->
+                                </select>
+                            </div>
+            
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Cantidad:</label>
+                                <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Cantidad" min="1" required />
+                            </div>
+            
+                            <button type="button" class="btn btn-secondary" id="add-product-btn">Agregar Producto</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+           
+            
+
+            <div class="col-md-6">
+                <!-- Tabla de Productos Agregados -->
+                <div class="card card-transparent">
+                    <div class="card-body">
+                        <h2 class="h5">Productos Agregados</h2>
+                        <table class="table table-bordered" id="products-table">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-table-body">
+                                <!-- Productos agregados aparecerán aquí -->
+                            </tbody>
+                        </table>
+                        <!-- Mostrar total de la venta -->
+                        <div id="total-price">
+                            <h4>Total: $<span id="total-amount">0.00</span></h4>
+                        </div>
+                        <div id="discount-info">
+                            <h4>Descuento Aplicado: <span id="discount-amount">0.00</span>%</h4>
+                        </div>
+
+                        <button class="btn btn-primary" id="confirm-sale-btn">Confirmar Venta</button>
+
+                        <button class="btn btn-primary" id="apply-discount-btn">Aplicar descuento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-4">
+            <h2 class="h5">Ventas Registradas</h2>
+            <table class="table table-bordered" id="sales-table">
+                <thead>
+                    <tr>
+                        <th>Nombre del Cliente</th>
+                        <th>NIT</th>
+                        <th>Teléfono</th>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                        <th>Productos</th>
+                        <th>Total</th> <!-- Nueva columna para el total -->
+                    </tr>
+                </thead>
+                <tbody id="sales-table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Archivos JavaScript -->
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        // JavaScript para manejar el checkbox de cliente frecuente
+        const frequentClientCheckbox = document.getElementById('frequent-client-checkbox');
+        const customerNameInput = document.getElementById('customer-name');
+        const frequentClientSection = document.getElementById('frequent-client-section');
+    
+        frequentClientCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                customerNameInput.disabled = true;  // Deshabilitar el campo de Nombre del Cliente
+                frequentClientSection.style.display = 'block';  // Mostrar el campo de Cliente Frecuente
+
+                customerNameInput.disabled = true;  // Deshabilitar el campo de Nombre del Cliente
+                frequentClientSection.style.display = 'block';  // Mostrar el campo de Cliente Frecuente
+            } else {
+                customerNameInput.disabled = false;  // Habilitar el campo de Nombre del Cliente
+                frequentClientSection.style.display = 'none';  // Ocultar el campo de Cliente Frecuente
+            }
+        });
+    </script>
+</body>
+</html>

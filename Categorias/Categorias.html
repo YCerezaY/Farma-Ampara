@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorías</title>
+
+    <!-- BOOTSWATCH -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/yeti/bootstrap.min.css" />
+
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="Categorias.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1-crypto-js.js"></script>
+
+   
+</head>
+
+<body class="bg-light-blue-custom">
+    <!-- BACK BUTTON -->
+    <div class="container p-4">
+        <a href="../index.html" class="btn btn-menu">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </a>
+
+        <!-- TITLE -->
+        <div class="title-container">
+            <h1 class="h2">Categorías</h1>
+        </div>
+
+        <!-- ADD CATEGORY -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-transparent">
+                    <div class="card-body">
+                        <h1 class="h4">Agregar Categoría</h1>
+
+                        <form id="category-form">
+                            <div class="mb-3">
+                                <label for="category-name" class="form-label">Nombre de Categoría:</label>
+                                <input
+                                    type="text"
+                                    id="category-name"
+                                    class="form-control"
+                                    placeholder="Nombre de la Categoría"
+                                    autofocus
+                                />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="category-description" class="form-label">Descripción:</label>
+                                <textarea
+                                    id="category-description"
+                                    rows="3"
+                                    class="form-control"
+                                    placeholder="Descripción de la Categoría"
+                                ></textarea>
+                            </div>
+
+                            <button class="btn btn-custom" id="btn-category-form">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categorías List -->
+            <div class="col-md-6" id="categories-container">
+                <!-- Aquí puedes agregar los botones de editar y eliminar con sus clases correspondientes -->
+                <button class="btn btn-edit">Editar</button>
+                <button class="btn btn-delete">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM CODE -->
+    <script type="module" src="./index.js"></script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

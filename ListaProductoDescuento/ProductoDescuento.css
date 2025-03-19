@@ -1,0 +1,243 @@
+/* General Styles */
+body {
+    background-color: #012e46;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  /* Title Styles */
+  .title-container {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+  }
+  
+  .title-container h1 {
+    font-weight: 700;
+    color: #ffffff;
+  }
+  
+  /* Back Button */
+  .btn-menu {
+    background-color: #94b8d7;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .btn-menu ion-icon {
+    font-size: 1.5rem;
+  }
+  
+  
+  
+  #product-form .form-label {
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+  #product-form input,
+  #product-form select {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  #product-form button {
+    background-color: #d68fe6;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #product-form button:hover {
+    background-color: #00a4b3;
+  }
+  
+  /* Table Styles - Card Transparente */
+.table {
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con transparencia */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 15px; /* Espaciado interno de la tabla para dar espacio alrededor del contenido */
+    border: none; /* Quitar borde predeterminado de la tabla */
+}
+  
+  .table th {
+    background-color: #c4ab83;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    text-align: right; /* Mueve el texto hacia la derecha */
+    padding-right: 20px; /* Aumenta el espacio de la derecha para mayor separación */
+ }
+
+
+
+  
+  .table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #f7f7f7;
+  }
+  
+  .table td button {
+    margin-right: 0.5rem;
+  }
+  
+  /* Custom Button Styles */
+  .btn-delete {
+    background-color: #e7b8bd; /* Rojo */
+    color: #fff;
+  }
+  
+  .btn-delete:hover {
+    background-color: #e7b8bd; /* Rojo oscuro */
+  }
+  
+  .btn-edit {
+    background-color: #eadaaa; /* Amarillo */
+    color: #212529;
+  }
+  
+  .btn-edit:hover {
+    background-color: #eadaaa; /* Amarillo oscuro */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .title-container {
+      margin-bottom: 1rem;
+    }
+  
+    #product-form .form-label {
+      font-size: 0.875rem;
+    }
+  
+    .table th, .table td {
+      font-size: 0.875rem;
+    }
+  
+    .btn-menu ion-icon {
+      font-size: 1.2rem;
+    }
+  }
+/* Other existing styles */
+
+/* Style for expired products */
+.expired {
+    background-color: #f8d7da; /* Rojo claro */
+    color: #721c24; /* Texto rojo oscuro */
+  }
+  
+  /* Style for product status labels */
+  .status {
+    display: inline-block;
+    padding: 0.2em 0.6em;
+    border-radius: 0.2em;
+    font-size: 0.75em;
+    font-weight: bold;
+  }
+  
+  .status.expired {
+    color: #721c24; /* Texto rojo oscuro */
+    background-color: #f8d7da; /* Fondo rojo claro */
+  }
+  
+  .status.valid {
+    color: #155724; /* Texto verde oscuro */
+    background-color: #d4edda; /* Fondo verde claro */
+  }
+  .status.proximo-caducado {
+    color: rgb(113, 113, 0); /* Texto verde oscuro */
+    background-color: #eeebb4; /* Fondo verde claro */
+  }
+/* Other existing styles */
+
+/* Style for product images */
+.img-thumbnail {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+    background-color: #f8f9fa;
+}
+
+.text-white {
+  color: white;
+}
+
+.icon-image {
+  width: 35px; /* Ajusta el tamaño de las imágenes */
+  height: 35px;
+  cursor: pointer; /* Cambia el cursor al pasar por la imagen */
+  margin: 5px; /* Reduce el espacio entre las imágenes */
+  transition: transform 0.2s ease; /* Efecto suave al pasar el ratón */
+  display: inline-block; /* Asegura que las imágenes estén en línea */
+}
+
+.icon-image:hover {
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el ratón */
+}
+
+/* Contenedor para alinear las imágenes a la derecha */
+.image-container {
+  text-align: right; /* Mueve las imágenes hacia la derecha */
+  margin-right: 20px; /* Ajusta la distancia del borde derecho */
+}
+
+    
+/* Card Transparente */
+.card {
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con transparencia */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 15px; /* Espaciado interno de la card */
+    margin: 20px; /* Espacio alrededor de la card */
+    border: none; /* Eliminar bordes */
+}
+
+/* Table Styles */
+.table {
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo blanco con transparencia */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    padding: 15px; /* Espaciado interno de la tabla para dar espacio alrededor del contenido */
+    border: none; /* Quitar borde predeterminado de la tabla */
+}
+
+.table th {
+    background-color: #c4ab83;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f7f7f7;
+}
+
+.table td button {
+    margin-right: 0.5rem;
+}
+
+
+  

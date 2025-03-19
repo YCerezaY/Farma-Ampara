@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+    <script type="module">
+      // Importar las funciones necesarias de Firebase SDK
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+        addDoc,
+        query,
+        where
+      } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
+      // Configuración de Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyCCDArnHi9WUGdiIAMMKeC9lIKuXZRy0vg",
+        authDomain: "farmacia-77662.firebaseapp.com",
+        databaseURL: "https://farmacia-77662-default-rtdb.firebaseio.com",
+        projectId: "farmacia-77662",
+        storageBucket: "farmacia-77662.appspot.com",
+        messagingSenderId: "462794672859",
+        appId: "1:462794672859:web:e368c3c35bfe9445e61afe"
+      };
+
+      // Inicializar Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // Función para insertar usuarios con contraseñas encriptadas y roles en Firestore
+      const insertUser = async (email, password, role) => {
+        const hashedPassword = sha256(password); // Encriptar la contraseña
+        try {
+          await addDoc(collection(db, "users"), {
+            email: email,
+            password: hashedPassword,
+            role: role // Agregar el campo de rol
+          });
+          console.log("Usuario registrado correctamente:", email);
+          alert("¡Usuario registrado correctamente!");
+        } catch (error) {
+          console.error("Error al registrar el usuario: ", error);
+          alert("Error al registrar el usuario. Intenta de nuevo.");
+        }
+      };
+
+      // Función para autenticar al usuario con mitigación de intentos de inyección
+      const authenticateUser = async (username, password) => {
+        // Validación para asegurar que los campos no estén vacíos
+        if (!username || !password) {
+          alert("Ambos campos son obligatorios.");
+          return false;
+        }
+
+        // Sanitizar las entradas para evitar inyecciones de código
+        const sanitizedUsername = username.replace(/[^\w\s@.]/gi, ''); // Eliminar caracteres especiales del correo
+        const sanitizedPassword = password.replace(/[^\w\s]/gi, ''); // Eliminar caracteres especiales de la contraseña
+
+        // Si se detectan caracteres especiales
+        if (sanitizedUsername !== username || sanitizedPassword !== password) {
+          alert("Los campos no pueden contener caracteres especiales. Por favor, ingresa solo letras, números y espacios.");
+          return false; // No proceder si se encuentran caracteres no permitidos
+        }
+
+        // Buscar en la base de datos si el usuario existe y comparar la contraseña encriptada
+        const usersRef = collection(db, "users");
+        const q = query(usersRef, where("email", "==", sanitizedUsername));
+
+        try {
+          const querySnapshot = await getDocs(q);
+          if (!querySnapshot.empty) {
+            const userDoc = querySnapshot.docs[0];
+            const storedHashedPassword = userDoc.data().password;
+
+            // Comparar las contraseñas hasheadas
+            if (sha256(sanitizedPassword) === storedHashedPassword) {
+              // Obtener el rol del usuario
+              const userRole = userDoc.data().role;
+
+              // Guardar el rol en sessionStorage
+              sessionStorage.setItem("role", userRole);
+
+              // Mostrar el rol en la consola
+              console.log("Rol del usuario:", userRole);
+
+              return true; // Si las contraseñas coinciden, autenticación exitosa
+            }
+          }
+          return false; // Si no hay coincidencias o contraseñas no coinciden
+        } catch (error) {
+          console.error("Error al autenticar al usuario: ", error);
+          return false; // En caso de error, no se permite la autenticación
+        }
+      };
+
+      // Listener para el evento de envío del formulario de inicio de sesión
+      document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.querySelector('.sign-in-form');
+        const signUpForm = document.querySelector('.sign-up-form');
+
+        loginForm.addEventListener('submit', async (e) => {
+          e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+          const username = loginForm.querySelector('input[type="text"]').value;
+          const password = loginForm.querySelector('input[type="password"]').value;
+
+          // Verificar si las credenciales son correctas
+          const isAuthenticated = await authenticateUser(username, password);
+
+          if (isAuthenticated) {
+            // Redirigir a index.html si la autenticación es exitosa
+            window.location.href = '/index.html'; // Asegúrate de que index.html esté en la raíz
+          } else {
+            alert('Credenciales incorrectas, por favor intenta de nuevo.');
+          }
+        });
+
+        // Listener para el evento de envío del formulario de registro
+        signUpForm.addEventListener('submit', async (e) => {
+          e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+
+          const email = signUpForm.querySelector('input[type="email"]').value;
+          const password = signUpForm.querySelector('input[type="password"]').value;
+
+          // Validación del correo
+          const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+          if (!email.match(emailPattern)) {
+            alert("Por favor, ingresa un correo válido de Gmail.");
+            return;
+          }
+
+          // Insertar el nuevo usuario con rol "empleado"
+          await insertUser(email, password, "empleado");
+
+          // Mostrar un mensaje emergente de éxito
+          alert("¡Usuario registrado correctamente!");
+
+          // Limpiar los campos del formulario
+          signUpForm.querySelector('input[type="email"]').value = '';
+          signUpForm.querySelector('input[type="password"]').value = '';
+        });
+      });
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Formulario de Ingreso y Registro</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <!-- Formulario de inicio de sesión -->
+          <form action="#" class="sign-in-form">
+            <h2 class="title">Iniciar sesión</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Correo electrónico" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Contraseña" required />
+            </div>
+            <input type="submit" value="Ingresar" class="btn solid" />
+          </form>
+
+          <!-- Formulario de registro -->
+          <form action="#" class="sign-up-form">
+            <h2 class="title">Registrarse</h2>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Correo electrónico" required />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Contraseña" required />
+            </div>
+            <input type="submit" class="btn" value="Registrarse" />
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>Nuevo Usuario</h3>
+            <p>
+              Únete a nuestra comunidad y descubre nuevas experiencias.
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Registrarse
+            </button>
+          </div>
+          <img src="img/log.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>¿Ya tienes una cuenta?</h3>
+            <p>
+              Inicia sesión y accede a todas nuestras funciones.
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Iniciar sesión
+            </button>
+          </div>
+          <img src="img/register.svg" class="image" alt="" />
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

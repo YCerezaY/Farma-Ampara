@@ -1,0 +1,133 @@
+/* Fuente curveada para el texto */
+body, .form-control, .form-label, .btn-custom, .card-body, h1, h2 {
+    font-family: 'Arial Rounded MT Bold', sans-serif; 
+  }
+  
+ /* Fondo celeste translúcido para el cuerpo */
+.bg-light-blue-custom {
+  background-color: #012e46; /* Celeste con transparencia */
+  color: rgb(255, 255, 255); /* Color del texto en negro */
+}
+
+
+  
+  /* Centrando el texto del título */
+  .title-container {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo de tarjeta translúcida con bordes curveados */
+  .card-transparent {
+    background-color: rgba(255, 255, 255, 0.8); /* Blanco translúcido */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde blanco ligero */
+    border-radius: 15px; /* Bordes curveados */
+  }
+  
+  /* Color de texto en las tarjetas */
+  .card-transparent .card-body {
+    color: #000000; /* Texto negro para contraste */
+  }
+  
+  /* Estilo del botón con bordes curveados */
+  .btn-custom {
+    border-radius: 25px; /* Bordes curveados */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; 
+    font-weight: bold; /* Texto en negrita */
+  }
+  
+  .btn-custom {
+    background-color: #a66fe1; /* Fondo azul */
+    color: white;
+  }
+  
+  .btn-custom:hover {
+    background-color: #71b300;
+  }
+  
+
+  
+  /* Etiquetas y controles de formulario con bordes curveados */
+  .form-label {
+    color: #000000; /* Texto negro para etiquetas */
+  }
+  
+  .form-control {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco translúcido */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde gris claro */
+    color: #000000; /* Texto negro */
+    border-radius: 15px; /* Bordes curveados */
+    padding: 10px; /* Espaciado interno */
+  }
+  
+  /* Texto de marcador de posición en formularios */
+  .form-control::placeholder {
+    color: #888888; /* Gris claro para marcador de posición */
+  }
+  
+/* Estilos para el botón con el ícono de menú */
+.btn-menu {
+    position: fixed;
+    top: 15px; /* Ajusta la distancia desde la parte superior */
+    left: 15px; /* Ajusta la distancia desde la parte izquierda */
+    background-color: #779aba; /* Color de fondo del botón */
+    border: none; /* Sin borde */
+    border-radius: 50%; /* Forma redonda */
+    padding: 10px; /* Espaciado interno */
+    color: white; /* Color del ícono */
+    font-size: 24px; /* Tamaño del ícono */
+  }
+  
+  .btn-menu:hover {
+    background-color: #66839e; /* Color de fondo al pasar el ratón por encima */
+  }
+
+.card.card-body.mt-2.border-primary {
+    color: black; /* Cambia el color del texto a negro */
+    font-size: small; /* Reduce el tamaño del texto */
+    border-radius: 10px; /* Esquinas redondeadas */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+}
+.btn-delete {
+  background-color: #f7c4c9; /* Fondo rojo */
+  color: rgb(255, 255, 255); /* Texto blanco */
+}
+
+.btn-delete:hover {
+  background-color: #f7c4c9; /* Rojo más oscuro al pasar el ratón */
+}
+
+.btn-edit {
+  background-color: #f9edc8; /* Fondo amarillo */
+  color: black; /* Texto negro */
+}
+
+.btn-edit:hover {
+  background-color: #f9edc8; /* Amarillo más oscuro al pasar el ratón */
+}
+
+.icon-image {
+  width: 35px; /* Ajusta el tamaño de las imágenes */
+  height: 35px;
+  cursor: pointer; /* Cambia el cursor al pasar por la imagen */
+  margin: 5px; /* Reduce el espacio entre las imágenes */
+  transition: transform 0.2s ease; /* Efecto suave al pasar el ratón */
+  display: inline-block; /* Asegura que las imágenes estén en línea */
+}
+
+.icon-image:hover {
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el ratón */
+}
+
+/* Contenedor para alinear las imágenes a la derecha */
+.image-container {
+  text-align: right; /* Mueve las imágenes hacia la derecha */
+  margin-right: 20px; /* Ajusta la distancia del borde derecho */
+}
+
+
+
+
+
+  

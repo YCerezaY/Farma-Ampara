@@ -1,0 +1,132 @@
+/* Estilos generales para la tabla */
+/* Fondo celeste translúcido para el cuerpo */
+.bg-light-blue-custom {
+  background-color: #012e46; /* Celeste translúcido */
+  color: rgb(255, 255, 255);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  .table td {
+    background-color: #fff;
+  }
+  
+  /* Agregar un efecto hover para las filas */
+  .table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Estilos para la columna de productos */
+  .table td {
+    word-wrap: break-word; /* Evitar que el texto se desborde */
+  }
+  
+  /* Estilo para la celda que muestra el total */
+  .table .total-cell {
+    font-weight: bold;
+    color: green;
+  }
+  
+  /* Ajuste para los números de precios */
+  .table .price {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  /* Estilo para los botones */
+  .btn {
+    margin-top: 10px;
+  }
+  
+  /* Agregar margen y bordes redondeados a la tabla */
+  .table {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Estilos para los encabezados de la tabla */
+  .table th {
+    background-color: #c4ab83;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+
+
+
+
+
+
+
+
+  /* Estilos para la lista de productos dentro de la tabla */
+.product-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none; /* Elimina los puntos de la lista */
+  }
+  
+  /* Estilos para cada item de producto */
+  .product-item {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Estilos específicos para el nombre del producto */
+  .product-item .product-name {
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 4px;
+  }
+  
+  /* Estilos para la cantidad */
+  .product-item .product-quantity {
+    font-style: italic;
+    color: #6c757d;
+  }
+  
+  /* Estilos para el precio */
+  .product-item .product-price {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  /* Estilo para las filas cuando tienen un precio */
+  .table td .price {
+    font-weight: bold;
+  }
+  
+/* Estilos para el botón con el ícono de menú */
+.btn-menu {
+  position: fixed;
+  top: 15px; /* Ajusta la distancia desde la parte superior */
+  left: 15px; /* Ajusta la distancia desde la parte izquierda */
+  background-color: #94b8d7; /* Color de fondo del botón */
+  border: none; /* Sin borde */
+  border-radius: 20%; /* Forma redonda */
+  padding: 10px; /* Espaciado interno */
+  color: white; /* Color del ícono */
+  font-size: 24px; /* Tamaño del ícono */
+}
+
+.btn-menu:hover {
+  background-color: #779aba; /* Color de fondo al pasar el ratón por encima */
+  color: white;
+}

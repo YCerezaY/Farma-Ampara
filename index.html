@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmaAmpara</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul id="menuList">
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="medkit-sharp"></ion-icon>
+                        </span>
+                        <span class="title">Farma Ampara</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Home</span>
+                    </a>
+                </li>
+
+                <!-- Las secciones que solo los empleados pueden ver -->
+                <li id="empleados">
+                    <a href="Empleados/Empleados.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Empleados</span>
+                    </a>
+                </li>
+
+                <li id="categorias">
+                    <a href="Categorias/Categorias.html">
+                        <span class="icon">
+                            <ion-icon name="grid-outline"></ion-icon>
+                        </span>
+                        <span class="title">Categorías</span>
+                    </a>
+                </li>
+
+                <li id="productos">
+                    <a href="Productos/Productos.html">
+                        <span class="icon">
+                            <ion-icon name="pricetag-outline"></ion-icon>
+                        </span>
+                        <span class="title">Productos</span>
+                    </a>
+                </li>
+
+                <li id="clientes">
+                    <a href="ClientesFrecuentes/Clientes.html">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <span class="title">Clientes Frecuentes</span>
+                    </a>
+                </li>
+                
+                <li id="ventas">
+                    <a href="Ventas/Ventas.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Ventas</span>
+                    </a>
+                </li>
+
+                <li id="productoDescuento">
+                    <a href="ListaProductoDescuento/ProductoDescuento.html">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Productos en Descuento</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Login/index.html">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">1,504</div>
+                        <div class="cardName">Daily Views</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">80</div>
+                        <div class="cardName">Sales</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">284</div>
+                        <div class="cardName">Comments</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">$7,842</div>
+                        <div class="cardName">Earning</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="cash-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================ Add Charts JS ================= -->
+            <div class="chartsBx">
+                <div class="chart"> <canvas id="chart-1"></canvas> </div>
+                <div class="chart"> <canvas id="chart-2"></canvas> </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- ======= Charts JS ====== -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="assets/js/chartsJS.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        // Verificar el rol desde sessionStorage
+        let userRole = sessionStorage.getItem("role"); // Asumiendo que el rol está guardado en sessionStorage
+        console.log("Rol del usuario:", userRole); // Imprimir en consola el rol
+
+        // Comprobar el rol y ocultar las secciones correspondientes
+        if (userRole === "empleado") {
+            // Ocultar las secciones no permitidas para empleados
+            document.getElementById('empleados').style.display = 'none';
+            document.getElementById('clientes').style.display = 'none';
+            document.getElementById('productoDescuento').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

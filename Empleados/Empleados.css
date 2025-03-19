@@ -1,0 +1,195 @@
+/* Fuente curveada para el texto */
+body, .form-control, .form-label, .btn-custom, .card-body, h1, h2 {
+    font-family: 'Arial Rounded MT Bold', sans-serif; /* Fuente curveada para mayor suavidad */
+  }
+  
+  /* Fondo celeste translúcido para el cuerpo */
+  .bg-light-blue-custom {
+    background-color: #012e46; /* Celeste con transparencia */
+  }
+  
+  /* Centrando el texto del título */
+  .title-container {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  /* Estilo de tarjeta translúcida con bordes curveados */
+  .card-transparent {
+    background-color: rgba(255, 255, 255, 0.8); /* Blanco translúcido */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borde blanco ligero */
+    border-radius: 15px; /* Bordes curveados */
+  }
+  
+  /* Color de texto en las tarjetas */
+  .card-transparent .card-body {
+    color: #000000; /* Texto negro para contraste */
+  }
+  
+  /* Estilo del botón con bordes curveados */
+  .btn-custom, .btn-delete, .btn-edit {
+    border-radius: 25px; /* Bordes curveados */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none;
+    font-weight: bold; /* Texto en negrita */
+  }
+  
+  .btn-custom {
+    background-color: #a66fe1; /* Fondo azul */
+    color: white; /* Texto blanco */
+  }
+  
+  .btn-custom:hover {
+    background-color: #71b300; /* Azul más oscuro al pasar el ratón */
+  }
+  
+  .btn-delete {
+    background-color: #dc3545; /* Fondo rojo */
+    color: white; /* Texto blanco */
+  }
+  
+  .btn-delete:hover {
+    background-color: #c82333; /* Rojo más oscuro al pasar el ratón */
+  }
+  
+  .btn-edit {
+    background-color: #ffc107; /* Fondo amarillo */
+    color: black; /* Texto negro */
+  }
+  
+  .btn-edit:hover {
+    background-color: #e0a800; /* Amarillo más oscuro al pasar el ratón */
+  }
+  
+  /* Etiquetas y controles de formulario con bordes curveados */
+  .form-label {
+    color: #000000; /* Texto negro para etiquetas */
+  }
+  
+  .form-control {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco translúcido */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borde gris claro */
+    color: #000000; /* Texto negro */
+    border-radius: 15px; /* Bordes curveados */
+    padding: 10px; /* Espaciado interno */
+  }
+  
+  /* Texto de marcador de posición en formularios */
+  .form-control::placeholder {
+    color: #888888; /* Gris claro para marcador de posición */
+  }
+  
+/* Estilos para el botón con el ícono de menú */
+.btn-menu {
+  position: fixed;
+  top: 15px; /* Ajusta la distancia desde la parte superior */
+  left: 15px; /* Ajusta la distancia desde la parte izquierda */
+  background-color: #94b8d7; /* Color de fondo del botón */
+  border: none; /* Sin borde */
+  border-radius: 20%; /* Forma redonda */
+  padding: 10px; /* Espaciado interno */
+  color: white; /* Color del ícono */
+  font-size: 24px; /* Tamaño del ícono */
+}
+
+.btn-menu:hover {
+  background-color: #779aba; /* Color de fondo al pasar el ratón por encima */
+  color: white;
+}
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* Estilos para las tarjetas de empleados */
+.card-body {
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo translúcido */
+  border-radius: 15px; /* Bordes curveados */
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-bottom: 20px;
+}
+
+/* Estilos para los encabezados de cada tarjeta */
+.card-body h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333; /* Texto oscuro */
+  margin-bottom: 10px;
+}
+
+/* Estilo para las etiquetas de los campos de datos */
+.card-body p {
+  font-size: 1rem;
+  color: #666; /* Texto gris */
+  margin: 5px 0;
+}
+
+/* Estilo para resaltar el rol */
+.card-body p:nth-of-type(4) {
+  font-weight: bold; /* Resalta el rol */
+  color: #007bff; /* Azul */
+}
+
+/* Botones dentro de la tarjeta */
+.card-body .btn-delete, .card-body .btn-edit {
+  font-size: 0.9rem;
+  padding: 8px 16px; /* Tamaño de botón ajustado */
+  border-radius: 20px; /* Bordes curveados */
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+
+.card-body .btn-delete {
+  background-color: #e6abb1;
+  color: white;
+}
+
+.card-body .btn-delete:hover {
+  background-color: #e6abb1;
+}
+
+.card-body .btn-edit {
+  background-color: #ebe2c6;
+  color: black;
+}
+
+.card-body .btn-edit:hover {
+  background-color: #ebe2c6;
+}
+
+
+.icon-image {
+  width: 35px; /* Ajusta el tamaño de las imágenes */
+  height: 35px;
+  cursor: pointer; /* Cambia el cursor al pasar por la imagen */
+  margin: 5px; /* Reduce el espacio entre las imágenes */
+  transition: transform 0.2s ease; /* Efecto suave al pasar el ratón */
+  display: inline-block; /* Asegura que las imágenes estén en línea */
+}
+
+.icon-image:hover {
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el ratón */
+}
+
+/* Contenedor para alinear las imágenes a la derecha */
+.image-container {
+  text-align: right; /* Mueve las imágenes hacia la derecha */
+  margin-right: 20px; /* Ajusta la distancia del borde derecho */
+}
